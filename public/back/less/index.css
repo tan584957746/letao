@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.lt_content .l_chart,
+.lt_content .r_chart {
+  height: 400px;
+}

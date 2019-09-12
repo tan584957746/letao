@@ -1,3 +1,13 @@
 body {
   background: #222D32;
 }
+.lt_login {
+  padding-top: 200px;
+}
+.lt_login .panel-heading {
+  text-align: center;
+}
+.lt_login .panel-heading h3 {
+  font-size: 20px;
+  line-height: 40px;
+}

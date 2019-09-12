@@ -28,7 +28,7 @@
     </div>
     <div class="nav">
         <ul>
-            <li><a href="user.html"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
+            <li><a href="user.html" class="current"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
             <li>
                 <a href="javascript:;" class="categroy"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
                 <div class="child">
@@ -67,17 +67,82 @@
     <!--路径导航-->
     <ol class="breadcrumb">
         <li><a href="index.html">管理系统</a></li>
-        <li class="current">首页</li>
+        <li class="current">用户管理</li>
     </ol>
     <!--内容部分-->
-    <div class="lt_content container-fluid">
-        <div class="col-lg-6 l_chart"></div>
-        <div class="col-lg-6 r_chart"></div>
+    <div class="lt_content">
+        <table class="table table-bordered table-hover lt_table">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>1</td>-->
+                    <!--<td>itcast</td>-->
+                    <!--<td>15102324243</td>-->
+                    <!--<td>正常</td>-->
+                    <!--<td>-->
+                        <!--<botton class="btn btn-danger">禁用</botton>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <!--分页-->
+        <div class="text-right">
+            <!--是行内标签，用text-align-->
+            <ul id="pagintor"></ul>
+        </div>
+
+        <!--模态框-->
+        <div class="modal fade" id="userModal" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><i class="glyphicon glyphicon-info-sign"></i>你确定要执行此操作吗？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary submitBth">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+<!--准备模板-->
+<script type="text/html" id="tpl">
+    {{each rows v i}}
+    <tr>
+        <!--序号数=当前的条数+之前的页数*条数-->
+        <td>{{i+1+(page-1)*size}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <!--isDelete为正常，为0禁用-->
+        <td>{{v.isDelete===1?"正常":"禁用"}}</td>
+        <td data-id={{v.id}}>
+            <!--正常状态的时候，按钮为禁用-->
+            {{if v.isDelete===1}}
+            <botton class="btn btn-danger">禁用</botton>
+            {{/if}}
 
-
+            {{if v.isDelete===0}}
+            <botton class="btn btn-success">启用</botton>
+            {{/if}}
+        </td>
+    </tr>
+    {{/each}}
+</script>
 
 
 
@@ -86,8 +151,9 @@
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
-<script src="./lib/echarts/echarts.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="./js/common.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/user.js"></script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.lt_content .lt_table th,
+.lt_content .lt_table td {
+  text-align: center;
+  vertical-align: middle;
+}
