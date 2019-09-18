@@ -12,26 +12,26 @@ $(function () {
     render();
     function render() {
         $.ajax({
-            type:"get",
-            url:"/category/queryTopCategoryPaging",
+            type: "get",
+            url: "/category/queryTopCategoryPaging",
             data: {
-                page:currentPage,
-                pageSize:pageSize
+                page: currentPage,
+                pageSize: pageSize
             },
-            dataType:"json",
-            success:function(info){
-               console.log(info);
-                var htmlStr=template('addTpl',info);
+            dataType: "json",
+            success: function (info) {
+                console.log(info);
+                var htmlStr = template('addTpl', info);
                 $('tbody').html(htmlStr);
 
                 //初始化分页
                 $('#paginator').bootstrapPaginator({
                     bootstrapMajorVersion: 3,
                     currentPage: info.page,
-                    totalPages: Math.ceil(info.total/info.size),
-                    onPageClicked:function(a,b,c,page){
+                    totalPages: Math.ceil(info.total / info.size),
+                    onPageClicked: function (a, b, c, page) {
                         console.log(page);//当前被点击的页码
-                        currentPage=page;
+                        currentPage = page;
                         render();
                     }
                 });
@@ -65,24 +65,24 @@ $(function () {
     });
 
     //注册表单提交成功事件，阻止表单的默认提交方式，使用ajax进行提交
-    $('#form').on('success.form.bv',function(e){
+    $('#form').on('success.form.bv', function (e) {
         e.preventDefault(); //阻止默认提交
 
         //使用ajax进行提交
         $.ajax({
-            type:"post",
-            url:"/category/addTopCategory",
-            data:$('#form').serialize(),
-            dataType:"json",
-            success:function(info){
+            type: "post",
+            url: "/category/addTopCategory",
+            data: $('#form').serialize(),
+            dataType: "json",
+            success: function (info) {
                 console.log(info);
-                if(info.success){
+                if (info.success) {
                     //关闭模态框
                     $('#addModal').modal('hide');
                     //重新渲染页面,渲染第一页
-                    currentPage=1;
+                    currentPage = 1;
                     render();
-                    //重置
+                    //重置表单
                     $('#form').data('bootstrapValidator').resetForm(true);
                 }
             }

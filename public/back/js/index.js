@@ -2,6 +2,7 @@
  * Created by Administrator on 2019/9/9 0009.
  */
 $(function(){
+
     //图1
     var myChartL=echarts.init(document.querySelector('.l_chart'));
 
