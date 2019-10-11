@@ -11,35 +11,33 @@
     <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css"/>
     <!--引入公共样式-->
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/search.css"/>
+    <link rel="stylesheet" href="./css/searchList.css"/>
     <link rel="icon" href="./favicon.ico"/>
 </head>
 <body>
 <div class="lt_container">
     <div class="lt_header">
         <a href="javascript:history.back();" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
-        <h3>搜索中心</h3>
+        <h3>商品列表</h3>
     </div>
     <div class="lt_main">
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
+                <!--搜索-->
                 <div class="lt_search">
                     <input type="text" placeholder="请输入搜索关键字" class="search_input"/>
                     <button class="search_button">搜索</button>
                 </div>
-                <div class="lt_history">
-                    <!--<div class="history_title">-->
-                        <!--<span class="mui-pull-left">搜索历史</span>-->
-                        <!--<span class="mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>-->
-                    <!--</div>-->
-                    <!--<div class="history_content">-->
-                        <!--<ul>-->
-                            <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<a href="#" class="mui-pull-left">1</a>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<i class="mui-icon mui-icon-closeempty mui-pull-right mui_del"></i>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                        <!--</ul>-->
-                    <!--</div>-->
+                <div class="lt_sort">
+                    <a href="#" >上架时间<i class="fa fa-angle-down"></i></a>
+                    <a href="#" data-type="price">价格<i class="fa fa-angle-down"></i></a>
+                    <a href="#" data-type="num">库存<i class="fa fa-angle-down"></i></a>
+                    <a href="#">折扣<i class="fa fa-angle-down"></i></a>
+                </div>
+                 <!--商品-->
+                <div class="product mui-clearfix">
+                    <!--坑-->
+
                 </div>
             </div>
         </div>
@@ -76,25 +74,17 @@
     </div>
 </div>
 
-<script type="text/html" id="searchTpl">
-    {{if arr.length===0}}
-        <p>没有更多数据了</p>
-    {{else}}
-    <div class="history_title">
-        <span class="mui-pull-left">搜索历史</span>
-        <span class="mui-pull-right history_empty"><i class="fa fa-trash"></i>清空记录</span>
-    </div>
-    <div class="history_content">
-        <ul>
-            {{each arr v i}}
-                <li>
-                    <a href="searchList.html?key={{v}}" class="mui-pull-left">{{v}}</a>
-                    <i class="mui_del mui-icon mui-icon-closeempty mui-pull-right" data-index="{{i}}"></i>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
-    {{/if}}
+<script type="text/html" id="searchListTop">
+    {{each data v i}}
+        <div class="product_item">
+            <a href="product.html?productId={{v.id}}" data-id="{{v.id}}">
+                <img src="{{v.pic[0].picAddr}}" alt=""/>
+                <p class="mui-ellipsis-2">{{v.proName}}</p>
+                <p><span class="price">&yen;{{v.price}}</span> <span class="old_price">&yen;{{v.oldPrice}}</span></p>
+                <button class="button">立即购买</button>
+            </a>
+        </div>
+    {{/each}}
 </script>
 
 
@@ -103,6 +93,6 @@
 <script src="./lib/zepto/zepto.min.js"></script>
 <script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/common.js"></script>
-<script src="./js/search.js"></script>
+<script src="./js/searchList.js"></script>
 </body>
 </html>

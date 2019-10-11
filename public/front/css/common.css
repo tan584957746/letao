@@ -31,8 +31,8 @@ ul {
     padding-left: 45px;
     padding-right:45px;
 }
-.lt_header .icon_home,
-.lt_header .icon_search {
+.lt_header .icon_left,
+.lt_header .icon_right {
     position: absolute;
     top: 0;
     width: 45px;
@@ -40,10 +40,10 @@ ul {
     line-height: 45px;
     color: #fff;
 }
-.lt_header .icon_home {
+.lt_header .icon_left {
     left: 0;
 }
-.lt_header .icon_search {
+.lt_header .icon_right {
     right: 0;
 }
 .lt_header h3 {
@@ -59,6 +59,74 @@ ul {
     position: relative;
     width: 100%;
     height: 100%;
+}
+.lt_main .lt_search {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+.lt_main .lt_search .search_input {
+    width: 100%;
+    height: 34px;
+    font-size: 12px;
+    padding-right: 55px;
+    border-radius: 5px;
+    border: 1px solid #007AFF;
+    margin: 0;
+}
+.lt_main .lt_search .search_button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #fff;
+    background-color: #007AFF;
+    border: 1px solid #007AFF;
+    border-radius: 0 5px 5px 0;
+}
+
+/*商品区块*/
+.lt_main .product {
+    width: 100%;
+    padding:10px;
+}
+.lt_main .product .product_item {
+    float: left;
+    width: 48%;
+    height: 288px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.lt_main .product .product_item:nth-child(2n+1) {
+    margin-right: 4%;
+}
+.lt_main .product .product_item a {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.lt_main .product .product_item img {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+}
+.lt_main .product .product_item a p {
+    font-size: 14px;
+    color: #8f8f94;
+}
+.lt_main .product .product_item a p:first-of-type {
+    text-align: left;
+}
+.lt_main .product .product_item a p .price {
+    color: #f00;
+}
+.lt_main .product .product_item a p .old_price {
+    text-decoration: line-through;
+}
+.lt_main .product .product_item a button{
+    border: 1px solid #007aff;
+    background-color: #007aff;
+    color: #fff;
 }
 
 .lt_footer {
@@ -87,4 +155,20 @@ ul {
 }
 .lt_footer ul li a.current p{
     color: orange;
+}
+
+/*公共尺码*/
+.lt_size span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+    margin: 3px 0;
+}
+.lt_size span.current {
+    background-color: orange;
+    color: #fff;
 }

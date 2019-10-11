@@ -11,36 +11,36 @@
     <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css"/>
     <!--引入公共样式-->
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/search.css"/>
+    <link rel="stylesheet" href="./css/user.css"/>
     <link rel="icon" href="./favicon.ico"/>
 </head>
 <body>
 <div class="lt_container">
     <div class="lt_header">
         <a href="javascript:history.back();" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
-        <h3>搜索中心</h3>
+        <h3>会员中心</h3>
     </div>
     <div class="lt_main">
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
-                <div class="lt_search">
-                    <input type="text" placeholder="请输入搜索关键字" class="search_input"/>
-                    <button class="search_button">搜索</button>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell mui-media user_info">
+                        <!--坑-->
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">帐号与安全</a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">我的购物车</a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">收货地址管理</a>
+                    </li>
+                </ul>
+                <div class="out_btn_parent">
+                    <button class="mui-btn mui-btn-block out_btn">退出</button>
                 </div>
-                <div class="lt_history">
-                    <!--<div class="history_title">-->
-                        <!--<span class="mui-pull-left">搜索历史</span>-->
-                        <!--<span class="mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>-->
-                    <!--</div>-->
-                    <!--<div class="history_content">-->
-                        <!--<ul>-->
-                            <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<a href="#" class="mui-pull-left">1</a>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<i class="mui-icon mui-icon-closeempty mui-pull-right mui_del"></i>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                </div>
+
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.html" class="current">
                     <i class="fa fa-user"></i>
                     <p>用户中心</p>
                 </a>
@@ -76,25 +76,14 @@
     </div>
 </div>
 
-<script type="text/html" id="searchTpl">
-    {{if arr.length===0}}
-        <p>没有更多数据了</p>
-    {{else}}
-    <div class="history_title">
-        <span class="mui-pull-left">搜索历史</span>
-        <span class="mui-pull-right history_empty"><i class="fa fa-trash"></i>清空记录</span>
-    </div>
-    <div class="history_content">
-        <ul>
-            {{each arr v i}}
-                <li>
-                    <a href="searchList.html?key={{v}}" class="mui-pull-left">{{v}}</a>
-                    <i class="mui_del mui-icon mui-icon-closeempty mui-pull-right" data-index="{{i}}"></i>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
-    {{/if}}
+<script type="text/html" id="userTpl">
+    <a href="javascript:;">
+        <img class="mui-media-object mui-pull-left" src="./img/user.jpg">
+        <div class="mui-media-body">
+            {{username}}
+            <p class='mui-ellipsis'>绑定手机:{{mobile}}</p>
+        </div>
+    </a>
 </script>
 
 
@@ -103,6 +92,6 @@
 <script src="./lib/zepto/zepto.min.js"></script>
 <script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/common.js"></script>
-<script src="./js/search.js"></script>
+<script src="./js/user.js"></script>
 </body>
 </html>
